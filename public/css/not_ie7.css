@@ -1,0 +1,5 @@
+/* Sticky Footer !IE7 Fix */
+#wrap {
+	display: table;
+	height: 100%
+}

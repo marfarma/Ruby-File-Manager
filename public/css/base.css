@@ -1,0 +1,238 @@
+/*
+  base.css is based on http: //meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+   - Custom values have been added to create a 'base' stylesheet, rather than a CSS 'reset'
+   - A selection of classes have been added and can be used to create commonly used effects
+*/
+
+/* Reset Everything */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+b, del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+
+/* Body */
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 100%;
+	line-height: 1.4;
+	color: #333;
+	background: #fff;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, dt, table caption, th, form fieldset legend{
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	line-height: 1;
+}
+h1 {font-size: 185%;}
+h2 {font-size: 165%;}
+h3 {font-size: 145%;}
+h4, dt, table caption, thead th, form fieldset legend {font-size: 125%;}
+h5 {font-size: 115%;}
+h6 {font-size: 100%;}
+
+/* Links */
+a:link, a:visited {text-decoration: none;}
+
+a:link {color: #0859A1;}
+a:visited {color: #00327F;}
+a:hover {color: #086FCB;}
+a:active {color: #057F0E;}
+
+/* Paragraphs */
+p, dd {margin-bottom: 1em;}
+
+/* Lists */
+ol, ul {
+	list-style-position: inside;
+	margin: 0 2em 1em 2em;
+}
+
+ol {list-style-type: decimal;}
+ol ol {
+	list-style-type: lower-alpha;
+	margin: 0.25em 2em;
+}
+ol ol ol {list-style-type: lower-roman;}
+ol ol ol ol {list-style-type: decimal;}
+
+ul {list-style-type: square;}
+ul ul {
+	list-style-type: disc;
+	margin: 0.25em 2em;
+}
+ul ul ul {list-style-type: circle;}
+ul ul ul ul {list-style-type: square;}
+
+ol.no-bulllet, ul.no-bullet {
+	list-style: none;
+	margin: 0;
+}
+
+/* Horizontal Rule */
+hr {
+	margin: 2em auto;
+	width: 95%;
+	height: 1px;
+	color: #999;
+	background: #ccc;
+	clear: both;
+	border: 0;
+}
+
+/* Inline Elements */
+b, strong {font-weight: bold;}
+i, em {font-style: italic;}
+ins {
+	font-style: italic;
+	text-decoration: none;
+}
+del, s, strike {text-decoration: line-through;}
+
+/* Code */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+	font-weight: normal;
+}
+pre {
+	display: block;
+	width: 90%;
+	margin: 2em auto;
+	padding: 0.75em 1em;
+	background: #eee;
+	border: 1px solid #ccc;
+	overflow: auto;
+}
+
+/* Block Quotes */
+blockquote, q {
+	quotes: none;
+	width: 75%;
+	margin: 1.5em auto;
+	font-style: italic;
+	font-size: 90%;
+}
+blockquote p {margin: 0.75em 0;}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* Abbreviations and Acronyms */
+abbr, acronym {border-bottom: 1px dashed #999;}
+
+/* Focus */
+a:focus {outline: 1px dotted #999;}
+
+/* Tables (still need 'cellspacing="0"' in the markup) */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	margin: 0.5em;
+	border: 1px solid #ccc;
+	background: #e9e9e9;
+}
+caption, th, td {
+	padding: 0.5em 0 0.4em 0.6em;
+	text-align: left;
+}
+th {font-weight: bold;}
+thead th {font-size: 120%;}
+thead th, td {border-bottom: 1px solid #ccc;}
+thead, tfoot {padding: 10px;}
+tbody tr {background: #fff;}
+tbody tr:nth-child(even) {background: #fafafa;}
+tbody tr:hover {background: #f4f4f4;}
+
+/* Forms */
+form div {margin: 0.25em 0;}
+form div label {padding: 0 0.25em;}
+input, select, textarea {
+	margin: 0;
+	padding: 3px;
+}
+input[type="hidden"] {display: none;}
+
+/* Sub & Superscripts */
+sub {
+	vertical-align: baseline;
+	font-size: 60%;
+	position: relative;
+	bottom: -0.3em;
+}
+sup {
+	vertical-align: baseline;
+	font-size: 60%;
+	position: relative;
+	bottom: 0.6em;
+}
+
+/* Accessibility Links */
+.access {display: none;}
+
+/* Columns */
+.column {
+	position: relative;
+	float: left;
+	margin: 0.5em 0.9%;
+}
+.half {width: 48%;}
+.third {width: 31.25%;}
+.two_third {width: 64.5%;}
+.quater {width: 23%;}
+
+/* Common classes */
+.meta {
+	margin: 0.25em 0;
+	color: #666;
+	font-style: italic;
+	font-size: 90%;
+}
+
+.hide {display: none;}
+.show {display: block;}
+.visible {visibility: visible;}
+.invisible {visibility: hidden;}
+
+.top {vertical-align: top;}
+.middle {vertical-align: middle;}
+.bottom {vertical-align: bottom;}
+.sup {vertical-align: super;}
+.sub {vertical-align: sub;}
+
+.left {position: relative; float: left}
+.right {position: relative; float: right}
+
+.text_left {text-align: left;}
+.text_right {text-align: right;}
+.text_center {text-align: center;}
+.text_justify {text-align: justify;}
+
+.u {text-decoration: underline;}
+.o {text-decoration: overline;}
+.s {text-decoration: line-through;}
+
+.lowercase {text-transform: lowercase;}
+.uppercase {text-transform: uppercase;}
+.allcaps {text-transform: capitalize;}
+.smallcaps {font-variant: small-caps;}
+.oblique {font-style: oblique;}
+.indent {text-indent: 10px;}
+
+.clear {clear: both;}
