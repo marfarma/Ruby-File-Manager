@@ -9,39 +9,51 @@ end
 # Helpers
 helpers do
   def site_title
-    #'FileManager'
+    'FileManager'
   end
 end
 
-# Root Path
-root = '/Users/Andy'
-
-# Show Hidden Items
-SHOW_HIDDEN = false
 
 # List Directory
 get '/*?' do |dir|
-  # Join the directories with a slash
-  path = '/' + params[:splat].join('/')
+
+  # Build Path from URL parameters
+  path = '/' + dir.to_s
   path << '/' unless path[-1, 1] == '/'
-  full_path = root + path
 
-  # Prev Dir
-  prev_path = params[:splat].to_s.split('/')
-  prev_path.pop
-  prev_path = '/' + prev_path.join('/')
-  full_prev_path = root + prev_path
+  # Path to the Parent of the directory
+  @parent = dir.to_s.split('/')
+  @parent.pop
+  @parent = '/' + @parent.join('/')
 
-  @list = '<ul>'
-  @list << "<li><a href=\"#{prev_path}\">..</a></li>"
-  Dir.foreach("#{full_path}") do |x|
+  # Generate breadcrumb style links from the path
+  @path = [] # Array to store the links
+  paths = path.split('/') # Array of path steps to iterate through
+  paths.each_with_index do |item, index|
+    if index == paths.length-1
+      @path[index] = item
+    else
+      @path[index] = "<a href=\"#{paths[0..index].join('/')}\">#{item}</a>" unless item.to_s.length == 0
+    end
+  end
+ puts @path = path == '/' ? '/files' : '/<a href="/">files</a>' + @path.join('/')
+
+  # Get a list of files and directories in the current directory
+  @directories = ""
+  @files = ""
+  Dir.foreach("#{settings.file_root + path}") do |x|
+    full_path = settings.file_root + path + '/' + x
     if x != '.' && x != '..'
-      if( (x[0, 1] == '.' && SHOW_HIDDEN == true) || x[0, 1] != '.' )
-        @list << "\n<li class=\"#{File.directory?(x) ? 'dir' : File.extname(x)[1..File.extname(x).length-1] }\"><a href=\"#{path + x}\">#{path + x}</a></li>"
+      if( (x[0, 1] == '.' && settings.show_hidden == true) || x[0, 1] != '.' )
+        if File.directory?(full_path)
+          @directories << "\n<li class=\"dir\"><a href=\"#{path + x}\">#{x}</a></li>"
+        else
+          ext = File.extname(full_path)
+          @files << "\n<li class=\"#{ ext[1..ext.length-1]}\"><a href=\"#{path + x}\">#{x}</a></li>"
+        end
       end
     end
   end
-  @list << '<ul>'
 
-  erb "Path: #{path}<br />Full Path: #{full_path}" << @list
+  erb :index
 end
