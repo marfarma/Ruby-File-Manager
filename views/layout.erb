@@ -15,6 +15,12 @@
 	<div id="header">
 		<p><%= @path %></p>
 	</div>
+	<% unless session[:dir].nil? %>
+	<div id="current">
+		<p>Dir: <%= session[:dir] %></p>
+		<p>File: <%= session[:file] %></p>
+	</div>
+	<% end %>
 	<div id="main">
 
 		<%= yield %>
